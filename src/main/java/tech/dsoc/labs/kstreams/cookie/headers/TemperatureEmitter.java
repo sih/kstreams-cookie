@@ -28,15 +28,15 @@ public class TemperatureEmitter {
     Runtime.getRuntime().addShutdownHook(new Thread(temperatureEmitter::close));
   }
 
-    static StreamsBuilder createStreamBuilder() {
-        StreamsBuilder builder = new StreamsBuilder();
-        builder
-            .stream(INPUT_READINGS, Consumed.with(Serdes.String(), Serdes.Double()))
-            .transformValues(DataQualityChecker::new)
-            .filter((k,v) -> !v.isNaN())
-            .to(VERIFIED_OUTPUT, Produced.with(Serdes.String(), Serdes.Double()));
-       return builder;
-    }
+  static StreamsBuilder createStreamBuilder() {
+      StreamsBuilder builder = new StreamsBuilder();
+      builder
+          .stream(INPUT_READINGS, Consumed.with(Serdes.String(), Serdes.Double()))
+          .transformValues(DataQualityChecker::new)
+          .filter((k,v) -> !v.isNaN())
+          .to(VERIFIED_OUTPUT, Produced.with(Serdes.String(), Serdes.Double()));
+     return builder;
+  }
 
 
 }
