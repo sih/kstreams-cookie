@@ -1,7 +1,7 @@
 # KStreams Cookbook
 
 ## Overview
-Simple examples and recipes for using Kafka Streams
+Simple examples and recipes for using Kafka Streams.
 
 ## Contents
 
